@@ -1,0 +1,744 @@
+/* ═══════════════════════════════════════════════════
+   Leonardo da Vinci — Biographical Website
+   style.css  |  Shared styles for all pages
+   Western Civilization Final Project · NOVA
+═══════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&display=swap');
+
+/* ── CUSTOM PROPERTIES ── */
+:root {
+  --ink:            #1a1208;
+  --parchment:      #f5eedc;
+  --parchment-dark: #e8dfc5;
+  --parchment-mid:  #ede4c8;
+  --sepia:          #7a5c2a;
+  --gold:           #c4922a;
+  --gold-light:     #e8c060;
+  --rust:           #8b3a1c;
+  --shadow:         rgba(26,18,8,0.18);
+  --nav-h:          64px;
+}
+
+/* ── RESET ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── BASE ── */
+body {
+  background: var(--parchment);
+  color: var(--ink);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 18px;
+  line-height: 1.75;
+  min-height: 100vh;
+}
+
+/* Subtle ruled paper texture */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent, transparent 28px,
+      rgba(26,18,8,0.025) 28px, rgba(26,18,8,0.025) 29px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent, transparent 40px,
+      rgba(26,18,8,0.012) 40px, rgba(26,18,8,0.012) 41px
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── NAVIGATION ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  background: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  z-index: 100;
+  border-bottom: 2px solid var(--gold);
+}
+
+.nav-brand {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  color: var(--gold-light);
+  letter-spacing: 0.12em;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 0.25rem;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+.nav-links li a {
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: #c8b89a;
+  text-decoration: none;
+  padding: 0.4rem 0.75rem;
+  border-radius: 2px;
+  transition: color 0.2s, background 0.2s;
+  display: block;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+  color: var(--gold-light);
+  background: rgba(196,146,42,0.15);
+}
+
+/* ── MAIN CONTENT WRAPPER ── */
+main {
+  padding-top: var(--nav-h);
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+}
+
+/* ── PAGE HEADER (used on inner pages) ── */
+.page-header {
+  text-align: center;
+  padding: 4rem 2rem 2rem;
+  border-bottom: 1px solid rgba(196,146,42,0.2);
+  background: linear-gradient(180deg, var(--parchment-dark) 0%, var(--parchment) 100%);
+}
+
+.page-header .overline {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.page-header h2 {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+}
+
+.page-header .sub {
+  font-style: italic;
+  color: var(--sepia);
+  font-size: 1rem;
+}
+
+/* ── CONTENT AREA ── */
+.content-area {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 3rem 2rem 5rem;
+}
+
+/* ── PULL QUOTE ── */
+.pull-quote {
+  margin: 2rem 0;
+  padding: 1.5rem 2rem;
+  border-left: 3px solid var(--gold);
+  background: rgba(196,146,42,0.05);
+}
+
+.pull-quote p {
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--sepia);
+  margin: 0 0 0.5rem;
+}
+
+.pull-quote cite {
+  font-size: 0.8rem;
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  font-style: normal;
+}
+
+/* ── BIO ERA SECTIONS ── */
+.bio-era {
+  margin-bottom: 3.5rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(196,146,42,0.2);
+}
+
+.bio-era:last-child { border-bottom: none; }
+
+.era-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.era-year {
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+.era-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(196,146,42,0.4), transparent);
+}
+
+.bio-era h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--sepia);
+  margin-bottom: 1rem;
+}
+
+.bio-era p {
+  margin-bottom: 1rem;
+  color: #2e2010;
+  font-size: 1.05rem;
+}
+
+/* ── TIMELINE ── */
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+  border-left: 1px solid rgba(196,146,42,0.3);
+  margin: 2rem 0;
+}
+
+.tl-item {
+  position: relative;
+  padding: 0 0 2rem 2rem;
+}
+
+.tl-item::before {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+.tl-year {
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  margin-bottom: 0.3rem;
+}
+
+.tl-item p {
+  font-size: 0.95rem;
+  color: #2e2010;
+  line-height: 1.65;
+}
+
+/* ── ARTWORK GRID ── */
+.artwork-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.artwork-card {
+  background: var(--parchment-dark);
+  border: 1px solid rgba(196,146,42,0.3);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.artwork-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 48px var(--shadow);
+}
+
+.artwork-img-container {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: #2a1f0e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.artwork-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+  filter: sepia(15%);
+}
+
+.artwork-card:hover .artwork-img-container img {
+  transform: scale(1.04);
+}
+
+.artwork-info {
+  padding: 1.25rem 1.5rem;
+}
+
+.artwork-info h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  color: var(--sepia);
+  margin-bottom: 0.4rem;
+}
+
+.artwork-meta {
+  font-size: 0.8rem;
+  color: var(--gold);
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.75rem;
+}
+
+.artwork-info p {
+  font-size: 0.9rem;
+  color: #3a2c14;
+  line-height: 1.65;
+}
+
+/* ── INVENTIONS ── */
+.invention-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.invention-item {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.invention-number {
+  font-family: 'Cinzel', serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: rgba(196,146,42,0.25);
+  line-height: 1;
+  text-align: right;
+  padding-top: 0.1rem;
+}
+
+.invention-content h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--sepia);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.06em;
+}
+
+.invention-content p {
+  color: #2e2010;
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 0.75rem;
+}
+
+.invention-tag {
+  display: inline-block;
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  color: var(--rust);
+  border: 1px solid rgba(139,58,28,0.4);
+  padding: 0.2rem 0.6rem;
+  margin-right: 0.4rem;
+}
+
+/* ── VIDEO EMBED ── */
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  border: 1px solid rgba(196,146,42,0.3);
+  background: #1a1208;
+  margin: 2rem 0;
+}
+
+.video-container iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.video-caption {
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--sepia);
+  text-align: center;
+  margin-top: 0.75rem;
+}
+
+/* ── NOTEBOOKS STATS ── */
+.notebook-visual {
+  background: var(--parchment-dark);
+  border: 1px solid rgba(196,146,42,0.3);
+  padding: 2.5rem;
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+.notebook-visual::before {
+  position: absolute;
+  top: -0.5rem;
+  left: 1.5rem;
+  font-family: 'IM Fell English', serif;
+  font-size: 5rem;
+  color: rgba(196,146,42,0.15);
+  line-height: 1;
+}
+
+.notebook-visual p {
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--sepia);
+  line-height: 1.8;
+  position: relative;
+  z-index: 1;
+}
+
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1.5rem;
+  margin: 2.5rem 0;
+}
+
+.stat-box {
+  text-align: center;
+  background: var(--parchment-dark);
+  border: 1px solid rgba(196,146,42,0.25);
+  padding: 1.5rem 1rem;
+}
+
+.stat-num {
+  font-family: 'Cinzel', serif;
+  font-size: 2rem;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.1em;
+  color: var(--sepia);
+}
+
+/* ── SOURCES PAGE ── */
+.sources-section {
+  margin-bottom: 3rem;
+}
+
+.sources-section h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(196,146,42,0.3);
+}
+
+.source-entry {
+  padding: 1.25rem 0;
+  border-bottom: 1px solid rgba(196,146,42,0.12);
+  font-size: 0.95rem;
+  color: #2e2010;
+  line-height: 1.7;
+}
+
+.source-entry:last-child { border-bottom: none; }
+
+.source-entry a {
+  color: var(--rust);
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.source-entry a:hover { text-decoration: underline; }
+
+.source-num {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  margin-bottom: 0.4rem;
+}
+
+.source-annotation {
+  margin-top: 0.6rem;
+  font-style: italic;
+  color: var(--sepia);
+  font-size: 0.9rem;
+  padding-left: 1rem;
+  border-left: 2px solid rgba(196,146,42,0.3);
+}
+
+.citation-note {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: rgba(196,146,42,0.06);
+  border: 1px solid rgba(196,146,42,0.25);
+}
+
+.citation-note-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: var(--sepia);
+  margin-bottom: 0.75rem;
+}
+
+.citation-note p {
+  font-size: 0.9rem;
+  color: #3a2c14;
+  line-height: 1.65;
+}
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 2rem;
+  border-top: 1px solid rgba(196,146,42,0.2);
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: var(--sepia);
+  background: var(--parchment-dark);
+  position: relative;
+  z-index: 1;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.anim-fade-up {
+  animation: fadeUp 0.8s ease forwards;
+}
+
+@keyframes pulse-line {
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 1; }
+}
+
+/* ── HOME PAGE HERO ── */
+.hero {
+  min-height: calc(100vh - var(--nav-h));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 40%, rgba(196,146,42,0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 20% 80%, rgba(139,58,28,0.06) 0%, transparent 60%);
+}
+
+.hero-ornament {
+  font-size: 1.1rem;
+  letter-spacing: 0.35em;
+  color: var(--gold);
+  font-family: 'Cinzel', serif;
+  margin-bottom: 1.5rem;
+  opacity: 0.8;
+}
+
+.hero h1 {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  margin-bottom: 0.3rem;
+  animation: fadeUp 0.8s ease 0.1s both;
+}
+
+.hero h1 em {
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  color: var(--sepia);
+  font-size: 0.65em;
+  display: block;
+  letter-spacing: 0.08em;
+  margin-top: 0.3rem;
+}
+
+.hero-divider {
+  width: 180px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 2rem auto;
+  position: relative;
+}
+
+.hero-divider::before {
+  content: '✦';
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--gold);
+  font-size: 0.7rem;
+  background: var(--parchment);
+  padding: 0 6px;
+}
+
+.hero-dates {
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  color: var(--sepia);
+  margin-bottom: 2rem;
+  animation: fadeUp 0.8s ease 0.2s both;
+}
+
+.hero-intro {
+  max-width: 680px;
+  font-size: 1.15rem;
+  color: #3a2c14;
+  font-style: italic;
+  line-height: 1.85;
+  margin-bottom: 3rem;
+  animation: fadeUp 0.8s ease 0.25s both;
+}
+
+.hero-tags {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: fadeUp 0.8s ease 0.35s both;
+}
+
+.tag {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: var(--sepia);
+  border: 1px solid var(--gold);
+  padding: 0.35rem 0.9rem;
+  border-radius: 1px;
+  background: rgba(196,146,42,0.06);
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--sepia);
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  opacity: 0.6;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: pulse-line 2s ease-in-out infinite;
+}
+
+/* ── HOME SECTION CARDS ── */
+.home-sections {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  padding: 4rem 3rem;
+  background: var(--parchment-dark);
+  border-top: 1px solid rgba(196,146,42,0.3);
+  position: relative;
+  z-index: 1;
+}
+
+.section-card {
+  background: var(--parchment);
+  border: 1px solid rgba(196,146,42,0.4);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+  text-decoration: none;
+  display: block;
+  color: inherit;
+}
+
+.section-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px var(--shadow);
+  border-color: var(--gold);
+}
+
+.section-card .card-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  display: block;
+  filter: sepia(60%);
+}
+
+.section-card h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  color: var(--sepia);
+  margin-bottom: 0.5rem;
+}
+
+.section-card p {
+  font-size: 0.9rem;
+  color: #5a4420;
+  line-height: 1.6;
+}
